@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_ui/screens/home/home_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:responsive_ui/screens/responsive/responsive_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,18 +9,20 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    return ScreenUtilInit(
+      designSize: const Size(1440, 1024), // desktop reference size
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, __) => const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: ResponsiveHome(),
       ),
-      home:HomeScreen(),
     );
   }
 }
+
+
+
 
